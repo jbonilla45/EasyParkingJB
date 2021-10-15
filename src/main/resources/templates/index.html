@@ -6,23 +6,6 @@
 </head>
 <body>
 <h1>Inicio</h1>
-<div th:if="${operadores != null }">
-    <table>
-        <tr>
-            <th>id</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Cargo</th>
-        </tr>
-        <tr th:each="operador:${operadores}">
-            <td th:text ="${operador.idoperador}"></td>
-            <td th:text ="${operador.nombre}"></td>
-            <td th:text ="${operador.apellido}"></td>
-            <td th:text ="${operador.cargo}"></td>
-        </tr>
-    </table>
-
-</div>
 
 </body>
 </html>
