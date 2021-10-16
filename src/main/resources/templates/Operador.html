@@ -14,12 +14,16 @@
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Cargo</th>
+            <th>Acciones</th>
         </tr>
         <tr th:each="operador:${operadores}">
             <td th:text="${operador.idoperador}"></td>
             <td th:text="${operador.nombre}"></td>
             <td th:text="${operador.apellido}"></td>
             <td th:text="${operador.cargo}"></td>
+            <td><a th:href="@{/editar/} + ${operador.idoperador}" th:text="Editar"></a>
+                <a th:href="@{/eliminar (idoperador=${operador.idoperador})}" th:text="Eliminar"></a>
+            </td>
         </tr>
     </table>
 

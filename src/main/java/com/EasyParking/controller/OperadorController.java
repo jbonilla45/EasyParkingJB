@@ -19,22 +19,36 @@ public class OperadorController {
     private OperadorService operadorService;
 
     @GetMapping("/")
-    public String inicio (Model model){
+    public String inicio(Model model) {
         var operadores = operadorService.listarOperador();
         log.info("Buscar todos los registros");
-        model.addAttribute("operadores",operadores);
+        model.addAttribute("operadores", operadores);
         return "Operador";
     }
 
     @GetMapping("/agregar")
-    public String agregar (Operador operador){
+    public String agregar(Operador operador) {
         return "AgregarOperador";
     }
 
     @PostMapping("/guardar")
-    public String guardar(Operador operador){
+    public String guardar(Operador operador) {
         operadorService.guardar(operador);
         log.info("operador guardado");
+        return "redirect:/";
+    }
+
+    @GetMapping("/editar/{idoperador}")
+    public String editar(Operador operador, Model model) {
+        operador = operadorService.encontrarOperador(operador);
+        model.addAttribute("operador", operador);
+        log.info("operador encontrado");
+        return "AgregarOperador";
+    }
+
+    @GetMapping("/eliminar")
+    public String eliminar(Operador operador) {
+        operadorService.eliminarOperador(operador);
         return "redirect:/";
     }
 }
