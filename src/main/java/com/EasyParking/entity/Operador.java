@@ -17,7 +17,7 @@ public class Operador {
 
     //atributos
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idoperador;
 
     @NotEmpty
