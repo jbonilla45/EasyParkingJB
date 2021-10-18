@@ -7,8 +7,11 @@ import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -32,7 +35,10 @@ public class OperadorController {
     }
 
     @PostMapping("/guardar")
-    public String guardar(Operador operador) {
+    public String guardar(@Valid Operador operador, Errors errors) {
+        if (errors.hasErrors()){
+            return "AgregarOperador";
+        }
         operadorService.guardar(operador);
         log.info("operador guardado");
         return "redirect:/";
@@ -49,6 +55,7 @@ public class OperadorController {
     @GetMapping("/eliminar")
     public String eliminar(Operador operador) {
         operadorService.eliminarOperador(operador);
+        log.info("operador eliminado");
         return "redirect:/";
     }
 }
