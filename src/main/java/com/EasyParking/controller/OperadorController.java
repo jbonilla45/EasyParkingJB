@@ -22,7 +22,13 @@ public class OperadorController {
     private OperadorService operadorService;
 
     @GetMapping("/")
-    public String inicio(Model model) {
+    public String inicio() {
+
+        return "index";
+    }
+
+    @GetMapping("/listar")
+    public String listar(Model model) {
         var operadores = operadorService.listarOperador();
         log.info("Buscar todos los registros");
         model.addAttribute("operadores", operadores);
@@ -41,7 +47,7 @@ public class OperadorController {
         }
         operadorService.guardar(operador);
         log.info("operador guardado");
-        return "redirect:/";
+        return "redirect:/listar";
     }
 
     @GetMapping("/editar/{idoperador}")
@@ -56,6 +62,6 @@ public class OperadorController {
     public String eliminar(Operador operador) {
         operadorService.eliminarOperador(operador);
         log.info("operador eliminado");
-        return "redirect:/";
+        return "redirect:/listar";
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Easy Parking S57 G6</title>
@@ -30,7 +30,7 @@
             <a class="nav-link" href="Parking.jsp">Tabla Parquedero</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="Operador.jsp">Tabla Operador</a>
+            <a class="nav-link" th:href="@{/listar}">Tabla Operador</a>
         </li>
     </ul>
 </header>

@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="/plantillas/plantilla :: head">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 
+<header th:replace="/plantillas/plantilla :: header"></header>
+<h2>Operador</h2>
+
 <a th:href="@{/agregar}">Agregar</a>
+<a th:href="@{/listar}">Listar</a>
 <div th:if="${operadores != null }">
     <table>
         <tr>

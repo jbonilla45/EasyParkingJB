@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
+<head th:replace="/plantillas/plantilla :: head">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<a th:href="@{/}">regresar</a>
+<header th:replace="/plantillas/plantilla :: header"></header>
+<h2>Agregar Operador</h2>
+<a th:href="@{/listar}">regresar</a>
 <form th:action="@{/guardar}" method="post" th:object="${operador}">
 
     <input type="hidden" name="idoperador" th:field="*{idoperador}">
@@ -23,7 +25,7 @@
     <input type="text" name="cargo" th:field="*{cargo}"/>
     <span th:if="${#fields.hasErrors('cargo')}" th:errors="*{cargo}">Aquí debe escribirse el cargo</span>
 <br>
-    <input type="submit" name="guardar" value="guardar"/>
+    <input type="submit" name="guardar" value="guardar" />
 </form>
 
 </body>
