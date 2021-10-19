@@ -22,9 +22,11 @@ public class OperadorController {
     private OperadorService operadorService;
 
     @GetMapping("/")
-    public String inicio() {
-
-        return "index";
+    public String inicio(Model model) {
+        var operadores = operadorService.listarOperador();
+        log.info("Buscar todos los registros");
+        model.addAttribute("operadores", operadores);
+        return "Operador";
     }
 
     @GetMapping("/listar")
