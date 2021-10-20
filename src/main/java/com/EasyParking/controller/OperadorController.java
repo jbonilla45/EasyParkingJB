@@ -24,7 +24,7 @@ public class OperadorController {
     @GetMapping("/")
     public String inicio() {
 
-        return "index";
+        return "Operador";
     }
 
     @GetMapping("/listar")
