@@ -3,7 +3,6 @@ package com.EasyParking.controller;
 import com.EasyParking.entity.Operador;
 import com.EasyParking.service.OperadorService;
 import lombok.extern.slf4j.Slf4j;
-import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +24,7 @@ public class OperadorController {
     @GetMapping("/home")
     public String inicio() {
 
-        return "index";
+        return "home";
     }
 
     @GetMapping("/listar")
@@ -45,7 +44,7 @@ public class OperadorController {
     @PostMapping("/guardar")
     public String guardar(@Valid Operador operador, Errors errors) {
         if (errors.hasErrors()){
-            return "index";
+            return "home";
         }
         operadorService.guardar(operador);
         log.info("operador guardado");
