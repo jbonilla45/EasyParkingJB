@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="https://www.thymeleaf.org">
 
 <head th:replace="/plantillas/plantilla :: head">
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
@@ -16,16 +16,16 @@
     <label for="nombre">Nombre:</label>
     <input type="text" name="nombre" th:field="*{nombre}">
     <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Aquí debe escribirse el nombre</span>
-<br>
+    <br>
     <label for="apellido">Apellido:</label>
     <input type="text" name="apellido" th:field="*{apellido}"/>
     <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Aquí debe escribirse el apellido</span>
-<br>
+    <br>
     <label for="cargo">Cargo:</label>
     <input type="text" name="cargo" th:field="*{cargo}"/>
     <span th:if="${#fields.hasErrors('cargo')}" th:errors="*{cargo}">Aquí debe escribirse el cargo</span>
-<br>
-    <input type="submit" name="guardar" value="guardar" />
+    <br>
+    <input type="submit" name="guardar" value="guardar"/>
 </form>
 
 </body>

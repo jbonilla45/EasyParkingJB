@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @Controller
@@ -21,17 +22,18 @@ public class OperadorController {
     @Autowired
     private OperadorService operadorService;
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public String inicio() {
 
-        return "Operador";
+        return "index";
     }
 
     @GetMapping("/listar")
     public String listar(Model model) {
-        var operadores = operadorService.listarOperador();
+        List<Operador> operadores = operadorService.listarOperador();
         log.info("Buscar todos los registros");
         model.addAttribute("operadores", operadores);
+        model.addAttribute("totalOperadores", operadores.size());
         return "Operador";
     }
 
@@ -43,7 +45,7 @@ public class OperadorController {
     @PostMapping("/guardar")
     public String guardar(@Valid Operador operador, Errors errors) {
         if (errors.hasErrors()){
-            return "AgregarOperador";
+            return "index";
         }
         operadorService.guardar(operador);
         log.info("operador guardado");
@@ -58,7 +60,7 @@ public class OperadorController {
         return "AgregarOperador";
     }
 
-    @GetMapping("/eliminar")
+    @GetMapping("/eliminar/{idoperador}")
     public String eliminar(Operador operador) {
         operadorService.eliminarOperador(operador);
         log.info("operador eliminado");

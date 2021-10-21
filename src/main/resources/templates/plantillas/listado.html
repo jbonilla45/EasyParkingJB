@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Listado</title>
+</head>
+<body>
+<section th:fragment="listado" id="listado">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9" style="text-align: center">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Listado Operadores</h4>
+                    </div>
+                    <div th:if="${operadores != null and !operadores.empty}">
+                        <table class="table table-striped ">
+                            <tr>
+                                <th>id</th>
+                                <th>Nombre y Apellido</th>
+
+                                <th>Cargo</th>
+                                <th>Acciones</th>
+                            </tr>
+                            <tr th:each="operador:${operadores}">
+                                <td th:text="${operador.idoperador}"></td>
+                                <td th:text="${operador.nombre}+' '+${operador.apellido}"></td>
+
+                                <td th:text="${operador.cargo}"></td>
+                                <td>
+                                    <a class="btn btn-secondary" th:href="@{/editar/} + ${operador.idoperador}">
+                                        <i class="fas fa-angle-double-right"></i> Editar
+                                    </a>
+                                    <a class="btn btn-danger" th:href="@{/eliminar/} + ${operador.idoperador}">
+                                        <i class="fas fa-angle-double-right"></i> Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center bg-success text-white mb-3">
+                    <div class="card-body">
+                        <h3>Total Operadores</h3>
+                        <h4 class="display-4">
+                            <i class="fas fa-users"></i> [[${totalOperadores}]]
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

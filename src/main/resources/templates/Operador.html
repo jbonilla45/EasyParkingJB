@@ -1,36 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="/plantillas/plantilla :: head">
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
 
 <header th:replace="/plantillas/plantilla :: header"></header>
-<h2>Operador</h2>
+<section id="main-header" class="py-2 bg-info text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>
+                    <i class="fas fa-cog"></i>Operador
+                </h1>
+            </div>
+        </div>
+    </div>
+</section>
 
-<a th:href="@{/agregar}">Agregar</a>
-<a th:href="@{/listar}">Listar</a>
-<div th:if="${operadores != null }">
-    <table>
-        <tr>
-            <th>id</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Cargo</th>
-            <th>Acciones</th>
-        </tr>
-        <tr th:each="operador:${operadores}">
-            <td th:text="${operador.idoperador}"></td>
-            <td th:text="${operador.nombre}"></td>
-            <td th:text="${operador.apellido}"></td>
-            <td th:text="${operador.cargo}"></td>
-            <td><a th:href="@{/editar/} + ${operador.idoperador}" th:text="Editar"></a>
-                <a th:href="@{/eliminar (idoperador=${operador.idoperador})}" th:text="Eliminar"></a>
-            </td>
-        </tr>
-    </table>
+<section th:replace="/plantillas/botonesAgregar :: botonesAgregar"></section>
+<section th:replace="/plantillas/agregar :: agregar"></section>
+<section th:replace="/plantillas/listado :: listado"></section>
+
+
 </div>
 
 <footer th:fragment="footer">
