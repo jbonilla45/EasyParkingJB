@@ -21,7 +21,7 @@ public class OperadorController {
     @Autowired
     private OperadorService operadorService;
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public String inicio() {
 
         return "home";
