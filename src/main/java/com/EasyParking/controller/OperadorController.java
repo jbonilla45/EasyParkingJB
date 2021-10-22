@@ -56,7 +56,7 @@ public class OperadorController {
         operador = operadorService.encontrarOperador(operador);
         model.addAttribute("operador", operador);
         log.info("operador encontrado");
-        return "AgregarOperador";
+        return "plantillas/editar";
     }
 
     @GetMapping("/eliminar/{idoperador}")
